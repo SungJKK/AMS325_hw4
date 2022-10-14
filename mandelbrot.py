@@ -9,14 +9,17 @@ warnings.filterwarnings('ignore')
 
 def mandelbrot(n:int, N_max:int = 50, threshold:int = 50):
     """
-    Computes Mandelbrot fractal & saves figure to .png file
+    Computes Mandelbrot fractal & saves figure to .png figure
 
         @param n: int = number of points 
         @param N_max: int = max number of Mandelbrot iterations for computation
         @param threshold: int = threshold value determining whether a point is included in the set
 
-        @return mask: numpy.ma.Core.MaskedArray = 
+        @return mask: numpy.ma.Core.MaskedArray = a masked array of points included in the Mandelbrot set
     """
+
+    # Set seed for reproducible output (for the report)
+    np.random.seed(0)
 
     # Generate n x n grid of (x, y) points
     x = np.linspace(-2, 1, n)

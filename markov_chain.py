@@ -2,6 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def markov(n:int = 5, N:int = 50):
+    """
+    Computes Markov chain transition & saves graph to .png figure
+
+        @param n:int = size of the n sized vector p, and n x n sized matrix P
+        @param N:int = number of transitions done to p and p_stationary
+
+        @return None
+    """
+
+    # Set seed for reproducible output (for the report)
+    np.random.seed(0)
+
     # Generate n-vector w/ non-negative entries
     p = np.random.rand(n)
 
@@ -30,10 +42,10 @@ def markov(n:int = 5, N:int = 50):
         # Compute the norm of p - p_stationary 
         norm = np.linalg.norm(p - p_stationary)
 
-        # Plot the point 
-        plt.plot(norm, i, color = 'red', marker = 'o')
+        # Plot the points individually 
+        plt.plot(norm, i, color = 'blue', marker = 'o', markersize  = 3)
 
-    # Save the plot into a figure
+    # Save the result plot into a figure
     plt.xlabel('Norms')
     plt.ylabel('Iterations (i)')
     plt.savefig('./markov.png')
